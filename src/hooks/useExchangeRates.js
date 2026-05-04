@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-var DEFAULT_URL = "/exchangeRates.json";
+var DEFAULT_URL = "https://gist.githubusercontent.com/Galaviv15/481a442e6e43e320fdc7f130c10acd46/raw/6990af9ab5c0f6b5a31919dfdb77978cebb865ee/rates.json";
 var DEFAULT_RATES = {
   USD: 1,
   ILS: 3.4,

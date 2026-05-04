@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Paper, Snackbar, TextField, Typography } from "@mui/material";
 
-var DEFAULT_URL = "/exchangeRates.json";
+var DEFAULT_URL = "https://gist.githubusercontent.com/Galaviv15/481a442e6e43e320fdc7f130c10acd46/raw/6990af9ab5c0f6b5a31919dfdb77978cebb865ee/rates.json";
 
 // Settings page for configuring exchange rate source.
 function SettingsPage() {
