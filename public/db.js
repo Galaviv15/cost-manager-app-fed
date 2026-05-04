@@ -1,3 +1,5 @@
+//Vanilla JS Version
+
 (function () {
   "use strict";
 
@@ -57,7 +59,11 @@
       writeJson(getCostsKey(), []);
     }
 
-    return meta;
+    return {
+      addCost: addCost,
+      getReport: getReport,
+      removeCost: removeCost
+    };
   }
 
   function addCost(costObject) {
@@ -85,30 +91,24 @@
     return readJson("exchangeRates", DEFAULT_RATES);
   }
 
-  function convertAmount(amount, fromCurrency, toCurrency, rates) {
-    var fromRate = rates[fromCurrency] || 1;
-    var toRate = rates[toCurrency] || 1;
-    var usdValue = Number(amount) / fromRate;
-
-    return usdValue * toRate;
+function convertAmount(amount, fromCurrency, toCurrency, rates) {
+// If the currencies are identical, return the original amount immediately
+  if (fromCurrency === toCurrency) {
+    return Number(amount);
   }
+// Retrieve rates from the rates object, defaulting to 1 (USD) if not found
+  var fromRate = (rates && rates[fromCurrency]) ? rates[fromCurrency] : 1;
+  var toRate = (rates && rates[toCurrency]) ? rates[toCurrency] : 1;
+
+// Convert the amount to a base USD value first, then convert to the target currency
+// Formula: (Amount / Source Rate) * Target Rate
+  var usdValue = Number(amount) / fromRate;
+  return usdValue * toRate;
+}
 
   function getReport(currency, year, month) {
     var costs = readJson(getCostsKey(), []);
-    var needsWrite = false;
 
-    costs = costs.map(function (cost) {
-      if (!cost.id) {
-        needsWrite = true;
-        return Object.assign({}, cost, { id: generateId() });
-      }
-
-      return cost;
-    });
-
-    if (needsWrite) {
-      writeJson(getCostsKey(), costs);
-    }
     var now = new Date();
     var targetYear = typeof year === "number" ? year : now.getFullYear();
     var targetMonth = typeof month === "number" ? month : now.getMonth() + 1;
@@ -119,7 +119,7 @@
       return costDate.getFullYear() === targetYear && costDate.getMonth() + 1 === targetMonth;
     });
 
-    var total = filtered.reduce(function (sum, cost) {
+    var totalAmount = filtered.reduce(function (sum, cost) {
       return sum + convertAmount(cost.sum, cost.currency, currency, rates);
     }, 0);
 
@@ -128,9 +128,9 @@
       year: targetYear,
       month: targetMonth,
       costs: filtered,
-      convertedTotal: {
+      total: {
         currency: currency,
-        amount: Number(total.toFixed(2))
+        sum: Number(totalAmount.toFixed(2))
       }
     };
   }
