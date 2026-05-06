@@ -24,7 +24,7 @@
 
 ## Functional Features Overview
 
-- **Add Cost:** Form captures sum, currency, category, and description; the date is attached automatically.
+- **Add Cost:** Form captures sum, currency, category, date and description.
 - **Reports:** Monthly filtering by year and month with user-selected currency conversion.
 - **Visualization:** Pie chart for category totals and bar chart for yearly totals.
 - **Currency Management:** Fetch API integration for exchange rates with a default JSON file.
@@ -41,8 +41,7 @@
 **Note:** Remove `node_modules` before packing for submission.
 
 ## Collaboration Tools Summary
-
-GitHub managed source control and issue tracking, while Trello organized sprints and task ownership. Slack supported quick feedback loops and daily coordination. These tools kept the team aligned on priorities, milestones, and QA status without slowing development.
+Our team maintained a streamlined workflow using Git for version control, ensuring code integrity and seamless feature integration. Monday.com served as our central project management hub, where we tracked sprints, assigned tasks, and monitored deadlines through visual boards and automations. To maintain real-time coordination, we used Discord for quick feedback loops and pair-programming sessions. This integrated stack kept us aligned on priorities and milestones throughout the development process.
 
 ## Technical Documentation (DAL)
 
