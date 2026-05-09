@@ -51,6 +51,7 @@ function ReportsPage() {
     currency: "USD"
   });
   var [refreshKey, setRefreshKey] = useState(0);
+  var currencySymbol = currencyIcons[filters.currency] || "";
 
   var exchangeRates = useExchangeRates();
   // Memoize filtered report data for the selected period.
@@ -175,7 +176,11 @@ function ReportsPage() {
                       nameKey="name"
                       innerRadius={50}
                       outerRadius={110}
-                      label
+                      label={function (entry) {
+                        return (
+                          entry.name + ": " + currencySymbol + entry.value
+                        );
+                      }}
                     >
                       {categoryData.map(function (entry, index) {
                         return (
@@ -186,7 +191,11 @@ function ReportsPage() {
                         );
                       })}
                     </Pie>
-                    <Tooltip />
+                    <Tooltip
+                      formatter={function (value) {
+                        return currencySymbol + Number(value).toFixed(2);
+                      }}
+                    />
                     <Legend />
                   </PieChart>
                 </ResponsiveContainer>
@@ -200,8 +209,19 @@ function ReportsPage() {
                   <BarChart data={yearlyData} margin={{ left: 16, right: 16 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis
+                      tickFormatter={function (value) {
+                        return currencySymbol + Number(value).toFixed(2);
+                      }}
+                    />
+                    <Tooltip
+                      formatter={function (value) {
+                        return [
+                          currencySymbol + Number(value).toFixed(2),
+                          "Total"
+                        ];
+                      }}
+                    />
                     <Legend
                       verticalAlign="bottom"
                       align="left"
