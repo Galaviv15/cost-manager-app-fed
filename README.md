@@ -6,16 +6,15 @@
 
 | First Name | Last Name | ID | Email |
 | --- | --- | --- | --- |
-| Gal | Aviv |  | galaviv15@gmail.com |
-| Sagi | Reuven |  | Sagi98rev@gmail.com |
-| Betty | Halmish |  | Betty.Hv1@gmail.com |
+| Gal | Aviv | 206510505 | galaviv15@gmail.com |
+| Sagi | Reuven | 206562712 | Sagi98rev@gmail.com |
+| Betty | Halmish | 209363555 | Betty.Hv1@gmail.com |
 
-**Live Demo:** [Add live demo link here](https://example.com)
+**Live Demo:** [https://cost-manager-fed.netlify.app/](https://example.com)
 
-**Video Presentation:** [Add YouTube link here](https://youtube.com)
+**Video Presentation:** [https://youtu.be/oLQ7DP8vdFE](https://youtube.com)
 
 ## Development Stack
-
 - Framework: React
 - UI Library: MUI (Material UI)
 - Logic: JavaScript (Professional JavaScript Style Guide)
@@ -38,7 +37,6 @@
 1. `npm install`
 2. `npm start`
 
-**Note:** Remove `node_modules` before packing for submission.
 
 ## Collaboration Tools Summary
 Our team maintained a streamlined workflow using Git for version control, ensuring code integrity and seamless feature integration. Monday.com served as our central project management hub, where we tracked sprints, assigned tasks, and monitored deadlines through visual boards and automations. To maintain real-time coordination, we used Discord for quick feedback loops and pair-programming sessions. This integrated stack kept us aligned on priorities and milestones throughout the development process.
